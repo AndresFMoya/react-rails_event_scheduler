@@ -4,14 +4,14 @@ const App = () => {
   const [state, setState] = useState({
     events: '',
   });
-  
-  const fetchTestEvents = function () {
+
+  const fetchTestEvents = () => {
     fetch('/api/v1/events')
       .then(res => res.json())
       .then(data => setState({ events: data.events }))
-      .catch((error) => { console.log("Error while fetching test data", error); })
+      .catch(() => {});
   };
-  
+
   return (
     <div className="App container">
       <button type="button" onClick={fetchTestEvents} className="btn btn-primary">Fetch Test Events</button>
