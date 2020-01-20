@@ -14,7 +14,7 @@
 This project consist of building a mobile web app for an Events Scheduler using Rails API as backend, and ReactJS as frontend. This is the Final Project for the Microverse Technical Curriculum 
 
 ### Live Verion
-[Events Scheduler Web App](https://floating-inlet-93283.herokuapp.com)
+[Events Scheduler Web App](https://rocky-reef-66767..herokuapp.com)
 
 ## Table of Contents
 
