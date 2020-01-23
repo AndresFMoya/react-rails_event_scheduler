@@ -8,10 +8,8 @@ const Event = (props) => {
     <div className="card" key={event.id} id={event.id}>
       <div className="event-info p-5">
         <div className="event">{ event.title }</div>
-        <div className="event">{ event.description }</div>
-        <div className="my-events">
-          { event.isFollowed }
-        </div>
+        <div className="event">{ event.city }</div>
+        <div className="event">{ event.location }</div>
       </div>
     </div>
   );
@@ -21,8 +19,8 @@ Event.propTypes = {
   event: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    isFollowed: PropTypes.bool,
+    city: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
   }),
 };
 

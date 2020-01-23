@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  scope '/api/v1' do
-    resources :events
-    resources :events_followers
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :events
+    end
   end
 end
