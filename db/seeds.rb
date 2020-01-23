@@ -14,8 +14,19 @@ event = Event.create!(title: 'SuperBowl LIV',
               description: 'The Super Bowl is the annual championship game of the National Football League (NFL).
               The game is the culmination of a regular season that begins in the late summer of the previous year.',
               location: 'Hard Rock Stadium',
-              city: 'Miami',
-              country: 'Florida',
+              city: 'Miami, FL',
+              country: 'USA',
+              topic: 'Sport',
               status: 'Pending')
+
+event2 = Event.create!(title: 'Strata Data & AI Conferences',
+                      date_start: 'Mar 15 2020 07:00',
+                      date_end: 'Mar 18 2020 22:00',
+                      description: 'A 4-day immersion in the most challenging problems, intriguing use cases, and enticing opportunities in data today.',
+                      location: 'TBD',
+                      city: 'San Francisco, CA',
+                      country: 'USA',
+                      topic: 'Tech',
+                      status: 'Pending')
 
 EventFollower.create!(user_id: user.id, event_id: event.id)
