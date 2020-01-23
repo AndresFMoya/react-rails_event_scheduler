@@ -9,6 +9,9 @@ const Event = (props) => {
       <div className="event-info p-5">
         <div className="event">{ event.title }</div>
         <div className="event">{ event.description }</div>
+        <div className="my-events">
+          { event.isFollowed }
+        </div>
       </div>
     </div>
   );
@@ -19,7 +22,14 @@ Event.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-  }).isRequired,
+    isFollowed: PropTypes.bool,
+  }),
+};
+
+Event.defaultProps = {
+  event: PropTypes.shape({
+    isFollowed: false,
+  }),
 };
 
 export default Event;

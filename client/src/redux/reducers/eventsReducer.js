@@ -1,4 +1,4 @@
-import LOAD_EVENTS from '../actions/actionTypes';
+import { LOAD_EVENTS } from '../actions/actionTypes';
 
 const eventsReducer = (state = [], action) => {
   switch (action.type) {
