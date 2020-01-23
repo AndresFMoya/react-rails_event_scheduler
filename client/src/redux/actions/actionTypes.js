@@ -1,1 +1,3 @@
-export const LOAD_EVENTS = 'LOAD_EVENTS';
+const LOAD_EVENTS = 'LOAD_EVENTS';
+
+export default LOAD_EVENTS;

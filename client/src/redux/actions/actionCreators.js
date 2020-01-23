@@ -1,5 +1,5 @@
-import { LOAD_EVENTS } from './actionTypes';
+import LOAD_EVENTS from './actionTypes';
 
-export function loadEvents(events) {
-  return { type: LOAD_EVENTS, events: events };
-}
+const loadEvents = (events) => ({ type: LOAD_EVENTS, events });
+
+export default loadEvents;
