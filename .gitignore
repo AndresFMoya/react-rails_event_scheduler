@@ -24,3 +24,4 @@
 .idea
 Guardfile
 node_modules
+.envrc
