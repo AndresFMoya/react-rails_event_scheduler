@@ -22,3 +22,5 @@
 /config/master.key
 
 .idea
+Guardfile
+node_modules
