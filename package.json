@@ -1,0 +1,18 @@
+{
+  "name": "react-rails_event_scheduler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:AndresFMoya/react-rails_event_scheduler.git",
+  "author": "AndresFMoya <andresfmoya@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "10.16.3",
+    "yarn": "1.19.1"
+  },
+  "scripts": {
+    "build": "yarn --cwd client install && yarn --cwd client build",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "yarn build && yarn deploy"
+  }
+}
+
