@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const EventDescription = (props) => {
   const initialEventState = {
@@ -16,10 +17,10 @@ const EventDescription = (props) => {
     };
     getEvent();
   }, []);
-  
-  const goBack =() => {
+
+  const goBack = () => {
     props.history.goBack();
-  }
+  };
 
   return (
     <div className="card" key={event.id} id={event.id}>
@@ -34,6 +35,11 @@ const EventDescription = (props) => {
       </div>
     </div>
   );
+};
+
+EventDescription.propTypes = {
+  history: PropTypes.objectOf(PropTypes.object).isRequired,
+  match: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default EventDescription;

@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import loadEvents from '../redux/actions/actionCreators';
+import loadEvents from '../redux/actions/eventActions';
 import EventsList from './EventsList';
 
 
 const EventsContainer = (props) => {
-  const { events, dispatch, login } = props;
+  const { events, dispatch } = props;
 
   const fetchEvents = () => {
     axios.get('/api/v1/events')
@@ -17,18 +17,13 @@ const EventsContainer = (props) => {
       .catch(error => (error));
   };
 
-  const isLoggedIn = (props) => (
-    login.current_user.include('id')
-  );
-
   useEffect(() => {
     fetchEvents();
   }, []);
 
-
   return (
     <div className="container">
-      <EventsList events={events} login={login} />
+      <EventsList events={events} />
     </div>
   );
 };

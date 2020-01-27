@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :events
+      resources :event_followers
+      delete '/event_followers', to: 'event_followers#destroy'
+
     end
   end
 

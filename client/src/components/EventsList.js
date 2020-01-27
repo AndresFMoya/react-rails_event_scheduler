@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Event from './Event';
 
 const EventsList = (props) => {
-  const { events, user, isAuthenticated } = props;
-  
+  const { events } = props;
+
   return (
     <div className="listWrapper">
       {events.map((event) => (
-        <Event event={event} user={user} key={event.id} id={event.id}/>
+        <Event event={event} key={event.id} id={event.id} />
       ))}
     </div>
   );

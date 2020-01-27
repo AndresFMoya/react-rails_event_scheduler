@@ -1,70 +1,73 @@
-import React, { Component } from 'react';
-import { Form, Button, Col, Grid } from 'react-bootstrap';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { authenticate } from '../redux/actions/authActions';
-import TextFieldGroup from '../components/common/formFields';
 
-class Login extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      username: "",
-      password: "",
-    };
-  }
-  
-  handleChange = (e) => {
-    const {name, value} = e.target;
-    this.setState({
-      [name]: value
-    });
-  };
-  
-  handleSubmit = (e) => {
-    e.preventDefault();
-    if (this.props.authenticate(this.state)) {
-      this.props.history.push('/')
-      window.alert("You're Logged In!")
-    } else {
-      window.alert("Sorry, something went wrong. Please try logging in again.")
+const Login = (props) => {
+  const [state, setState] = useState({
+    username: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'username') {
+      setState({
+        username: value,
+        password: state.password,
+      });
+    }
+    if (name === 'password') {
+      setState({
+        username: state.username,
+        password: value,
+      });
     }
   };
-  
-  render() {
-    return (
-      <main>
-        <Form onSubmit={this.handleSubmit}>
-          <h1 className="page-title">Login</h1>
-          <TextFieldGroup
-            label="username"
-            id="formControlsUsername"
-            type="text"
-            name="username"
-            placeholder="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-          <TextFieldGroup
-            label="Password"
-            id="formControlsPassword"
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <div className="submissionFields">
-            {/*<Button bsStyle="link">Forgot Password?</Button>*/}
-            <Button type="submit" value="Login">Log In</Button>
-          </div>
-          {/*<div className="alternativeAccess">*/}
-          {/*  <p>New to SelfCare? <a href="/signup">Sign Up</a></p>*/}
-          {/*</div>*/}
-        </Form>
-      </main>
-    )
-  }
-}
 
-export default Login = withRouter(connect(null, {authenticate})(Login));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (props.authenticate(state)) {
+      props.history.push('/');
+    }
+  };
+
+  return (
+    <main>
+      <form onSubmit={handleSubmit}>
+        <h1 className="page-title">Login</h1>
+        <input
+          className="form-Control"
+          label="username"
+          id="formControlsUsername"
+          type="text"
+          name="username"
+          placeholder="username"
+          value={state.username}
+          onChange={handleChange}
+        />
+        <input
+          className="form-Control"
+          label="Password"
+          id="formControlsPassword"
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={state.password}
+          onChange={handleChange}
+        />
+        <div className="submissionFields">
+          <button type="submit" value="Login">Log In</button>
+        </div>
+      </form>
+    </main>
+  );
+};
+
+Login.propTypes = {
+  authenticate: PropTypes.func.isRequired,
+  history: PropTypes.oneOfType([PropTypes.object]).isRequired,
+};
+
+
+export default connect(null, { authenticate })(Login);

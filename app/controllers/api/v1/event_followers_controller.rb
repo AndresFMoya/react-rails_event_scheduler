@@ -1,8 +1,8 @@
 class Api::V1::EventFollowersController < ApplicationController
   before_action :find_event, only: [:destroy]
-  
+
   def create
-    @event_follower = current_user.event_followers.build(event_params)
+    @event_follower = current_user.event_followers.build(event_follower_params)
     if @event_follower&.save
       render json: @event_follower
     else
@@ -12,14 +12,14 @@ class Api::V1::EventFollowersController < ApplicationController
 
   def destroy
     if @event_follower.destroy
-      render json: { message: "Successfully removed item." }, status: 204
+      render json: @event_follower
     else
-      render json: { message: "Unable to remove item" }, status: 400
+      render json: { message: 'Unable to remove item' }, status: 400
     end
   end
 
   def find_event
-    @event_follower = current_user.event_folloers.find_by(event_follower_params)
+    @event_follower = current_user.event_followers.find_by(event_follower_params)
   end
 
   def event_follower_params
