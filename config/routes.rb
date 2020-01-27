@@ -5,10 +5,9 @@ Rails.application.routes.draw do
     end
   end
 
-  post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  post '/sign_in', to: 'user_token#create'
+  post '/login', to: 'user_token#create'
   post '/sign_up', to: 'users#create'
   post '/find_user' => 'users#find'
 

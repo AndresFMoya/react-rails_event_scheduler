@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const Event = (props) => {
-  const { event } = props;
+  const { event, user, isAuthenticated } = props;
+
 
   return (
     <div className="card" key={event.id} id={event.id}>
@@ -11,7 +13,8 @@ const Event = (props) => {
         <div className="event">{ event.title }</div>
         <div className="event">{ event.city }</div>
         <div className="event">{ event.location }</div>
-        <button type="button" className="btn btn-primary">Add to My Events</button>
+        { isAuthenticated && user.event_follower_ids.includes(event.id) ? <button type="button">Unfollow</button>
+          : <button type="button">Follow</button> }
         <Link to={`events/${event.id}`}>Description</Link>
       </div>
     </div>
@@ -27,4 +30,9 @@ Event.propTypes = {
   }).isRequired,
 };
 
-export default Event;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.currentUser,
+});
+
+export default connect(mapStateToProps, {})(Event);

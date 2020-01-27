@@ -1,100 +1,70 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Form, Button, Col, Grid } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { authenticate } from '../redux/actions/authActions';
+import TextFieldGroup from '../components/common/formFields';
+
 class Login extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
-      username: '',
-      email: '',
-      password: '',
-      errors: ''
+      username: "",
+      password: "",
     };
   }
-  handleChange = (event) => {
-    const {name, value} = event.target
+  
+  handleChange = (e) => {
+    const {name, value} = e.target;
     this.setState({
       [name]: value
-    })
+    });
   };
-  handleSubmit = (event) => {
-    event.preventDefault()
-    const {username, email, password} = this.state
-    let user = {
-      username: username,
-      email: email,
-      password: password
+  
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if (this.props.authenticate(this.state)) {
+      this.props.history.push('/')
+      window.alert("You're Logged In!")
+    } else {
+      window.alert("Sorry, something went wrong. Please try logging in again.")
     }
-    
-    axios.post('localhost:3000/login', {user}, {withCredentials: true})
-      .then(response => {
-        if (response.data.logged_in) {
-          this.props.handleLogin(response.data)
-          this.redirect()
-        } else {
-          this.setState({
-            errors: response.data.errors
-          })
-        }
-      })
-      .catch(error => console.log('api errors:', error))
   };
-  redirect = () => {
-    this.props.history.push('/')
-  }
-  handleErrors = () => {
-    return (
-      <div>
-        <ul>
-          {this.state.errors.map(error => {
-            return <li key={error}>{error}</li>
-          })}
-        </ul>
-      </div>
-    )
-  }
+  
   render() {
-    const {username, email, password} = this.state
     return (
-      <div>
-        <h1>Log In</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="username"
+      <main>
+        <Form onSubmit={this.handleSubmit}>
+          <h1 className="page-title">Login</h1>
+          <TextFieldGroup
+            label="username"
+            id="formControlsUsername"
             type="text"
             name="username"
-            value={username}
+            placeholder="username"
+            value={this.state.username}
             onChange={this.handleChange}
           />
-          <input
-            placeholder="email"
-            type="text"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="password"
+          <TextFieldGroup
+            label="Password"
+            id="formControlsPassword"
             type="password"
             name="password"
-            value={password}
+            placeholder="Password"
+            value={this.state.password}
             onChange={this.handleChange}
           />
-          <button placeholder="submit" type="submit">
-            Log In
-          </button>
-          <div>
-            or <Link to='/signup'>sign up</Link>
+          <div className="submissionFields">
+            {/*<Button bsStyle="link">Forgot Password?</Button>*/}
+            <Button type="submit" value="Login">Log In</Button>
           </div>
-        
-        </form>
-        <div>
-          {
-            this.state.errors ? this.handleErrors() : null
-          }
-        </div>
-      </div>
-    );
+          {/*<div className="alternativeAccess">*/}
+          {/*  <p>New to SelfCare? <a href="/signup">Sign Up</a></p>*/}
+          {/*</div>*/}
+        </Form>
+      </main>
+    )
   }
 }
-export default Login;
+
+export default Login = withRouter(connect(null, {authenticate})(Login));

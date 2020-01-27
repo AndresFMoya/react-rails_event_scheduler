@@ -7,7 +7,7 @@ import EventsList from './EventsList';
 
 
 const EventsContainer = (props) => {
-  const { events, dispatch } = props;
+  const { events, dispatch, login } = props;
 
   const fetchEvents = () => {
     axios.get('/api/v1/events')
@@ -17,6 +17,10 @@ const EventsContainer = (props) => {
       .catch(error => (error));
   };
 
+  const isLoggedIn = (props) => (
+    login.current_user.include('id')
+  );
+
   useEffect(() => {
     fetchEvents();
   }, []);
@@ -24,7 +28,7 @@ const EventsContainer = (props) => {
 
   return (
     <div className="container">
-      <EventsList events={events} />
+      <EventsList events={events} login={login} />
     </div>
   );
 };
@@ -37,6 +41,7 @@ EventsContainer.propTypes = {
 const mapStateToProps = (state) => ({
   events: state.events,
   dispatch: state.dispatch,
+  login: state.login,
 });
 
 export default connect(mapStateToProps, null)(EventsContainer);
