@@ -24,8 +24,5 @@
 .idea
 Guardfile
 node_modules
-
 .envrc
-
-# Ignore application configuration
 /config/application.yml
