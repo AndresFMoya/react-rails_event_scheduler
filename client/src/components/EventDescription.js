@@ -16,10 +16,10 @@ const EventDescription = (props) => {
     };
     getEvent();
   }, []);
-  
-  const goBack =() => {
+
+  const goBack = () => {
     props.history.goBack();
-  }
+  };
 
   return (
     <div className="card" key={event.id} id={event.id}>
