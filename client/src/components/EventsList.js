@@ -6,11 +6,11 @@ const EventsList = (props) => {
   const { events } = props;
 
   return (
-    <div className="listWrapper">
+    <ul className="timeline">
       {events.map((event) => (
         <Event event={event} key={event.id} id={event.id} />
       ))}
-    </div>
+    </ul>
   );
 };
 

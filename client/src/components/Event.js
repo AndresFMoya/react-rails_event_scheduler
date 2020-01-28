@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createEventFollower, deleteEventFollower } from '../redux/actions/followActions';
+import './Event.scss';
 
 
 const Event = (props) => {
   const {
     event, user, isAuthenticated,
   } = props;
+
+  const history = useHistory();
 
   const [state, setState] = useState({
     isFollowed: null,
@@ -31,18 +34,23 @@ const Event = (props) => {
     }
   };
 
+  const handleEventDescription = () => {
+    history.push(`events/${event.id}`);
+  };
+
   return (
-    <div className="card" key={event.id} id={event.id}>
-      <div className="event-info p-5">
-        <div className="event">{ event.title }</div>
-        <div className="event">{ event.city }</div>
-        <div className="event">{ event.location }</div>
+    <li className="event">
+      <p className="date-start">{event.date_start}</p>
+      <div className="d-flex row">
+        <div role="banner" className="card event-info" onClick={handleEventDescription} key={event.id} id={event.id}>
+          <div className="event-title">{ event.title }</div>
+          <div className="event-city pb-2">{ event.city }</div>
+        </div>
         { (isAuthenticated && user.event_follower_ids.includes(event.id))
-        || (state.isFollowed === true) ? <button onClick={handleRemove} type="button">Unfollow</button>
-          : <button type="button" onClick={handleSubmit}>Follow</button> }
-        <Link to={`events/${event.id}`}>Description</Link>
+        || (state.isFollowed === true) ? <button type="button" className="event-button-remove" onClick={handleRemove}><span className="button-add w-100">+ Your Schedule </span></button>
+          : <button type="button" className="event-button-add" onClick={handleSubmit}><span className="button-add w-100">+ Your Schedule</span></button> }
       </div>
-    </div>
+    </li>
   );
 };
 

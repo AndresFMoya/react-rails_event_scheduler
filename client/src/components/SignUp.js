@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { authenticate } from '../redux/actions/authActions';
+import { signUp } from '../redux/actions/authActions';
 import './Login.scss';
 
-const Login = (props) => {
+const SignUp = (props) => {
   const [state, setState] = useState({
     username: '',
     password: '',
+    email: '',
   });
 
   const handleChange = (e) => {
@@ -17,28 +17,36 @@ const Login = (props) => {
       setState({
         username: value,
         password: state.password,
+        email: state.email,
       });
     }
     if (name === 'password') {
       setState({
         username: state.username,
         password: value,
+        email: state.email,
+      });
+    }
+    if (name === 'email') {
+      setState({
+        username: state.username,
+        password: state.password,
+        email: value,
       });
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (props.authenticate(state)) {
+    if (props.signUp(state)) {
       props.history.push('/');
     }
   };
 
   return (
     <div>
-      <Link to="signUp" className="m-3 login"> Sign Up </Link>
       <form onSubmit={handleSubmit}>
-        <h1 className="page-title title">Login</h1>
+        <h1 className="title">Sign Up</h1>
         <input
           className="form-Control mt-2 w-100"
           id="formControlsUsername"
@@ -50,25 +58,34 @@ const Login = (props) => {
         />
         <input
           className="form-Control mt-2 w-100"
+          id="formControlsEmail"
+          type="email"
+          name="email"
+          placeholder="email"
+          value={state.email}
+          onChange={handleChange}
+        />
+        <input
+          className="form-Control mt-2 w-100"
           id="formControlsPassword"
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="password"
           value={state.password}
           onChange={handleChange}
         />
         <div className="submissionFields">
-          <button className="btn btn-success w-100 mt-4" type="submit" value="Login">Log In</button>
+          <button className="btn btn-success w-100 mt-4" type="submit" value="Login">Sign Up</button>
         </div>
       </form>
     </div>
   );
 };
 
-Login.propTypes = {
-  authenticate: PropTypes.func.isRequired,
+SignUp.propTypes = {
+  signUp: PropTypes.func.isRequired,
   history: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 
-export default connect(null, { authenticate })(Login);
+export default connect(null, { signUp })(SignUp);

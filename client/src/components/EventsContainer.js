@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import loadEvents from '../redux/actions/eventActions';
 import EventsList from './EventsList';
-
+import './EventsContainer.scss';
 
 const EventsContainer = (props) => {
   const { events, dispatch } = props;
@@ -22,7 +22,8 @@ const EventsContainer = (props) => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container agenda">
+      <div className="card title">Agenda</div>
       <EventsList events={events} />
     </div>
   );
