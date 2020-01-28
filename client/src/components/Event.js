@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createEventFollower, deleteEventFollower } from '../redux/actions/followActions';
-
+import dateformat from 'dateformat'
 
 const Event = (props) => {
   const {
@@ -32,17 +32,20 @@ const Event = (props) => {
   };
 
   return (
-    <div className="card" key={event.id} id={event.id}>
-      <div className="event-info p-5">
-        <div className="event">{ event.title }</div>
-        <div className="event">{ event.city }</div>
-        <div className="event">{ event.location }</div>
-        { (isAuthenticated && user.event_follower_ids.includes(event.id))
-        || (state.isFollowed === true) ? <button onClick={handleRemove} type="button">Unfollow</button>
-          : <button type="button" onClick={handleSubmit}>Follow</button> }
-        <Link to={`events/${event.id}`}>Description</Link>
+    <li>
+      <p className="date-start">{event.date_start}</p>
+      <div className="card" key={event.id} id={event.id}>
+        <div className="event-info p-5">
+          <div className="event">{ event.title }</div>
+          <div className="event">{ event.city }</div>
+          <div className="event">{ event.location }</div>
+          { (isAuthenticated && user.event_follower_ids.includes(event.id))
+          || (state.isFollowed === true) ? <button onClick={handleRemove} type="button">Unfollow</button>
+            : <button type="button" onClick={handleSubmit}>Follow</button> }
+          <Link to={`events/${event.id}`}>Description</Link>
+        </div>
       </div>
-    </div>
+    </li>
   );
 };
 

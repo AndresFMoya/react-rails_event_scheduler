@@ -22,8 +22,8 @@ const EventsContainer = (props) => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="card"><h2>Agenda</h2></div>
+    <div className="container agenda">
+      <div className="card title"><h2>Agenda</h2></div>
       <EventsList events={events} />
     </div>
   );
