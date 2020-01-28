@@ -42,7 +42,7 @@ const Event = (props) => {
     <li className="event">
       <p className="date-start">{event.date_start}</p>
       <div className="d-flex row">
-        <div role="banner" className="card event-info" onClick={handleEventDescription} key={event.id} id={event.id}>
+        <div role="presentation" className="card event-info" onClick={handleEventDescription} onKeyPress={handleEventDescription} key={event.id} id={event.id}>
           <div className="event-title">{ event.title }</div>
           <div className="event-city pb-2">{ event.city }</div>
         </div>

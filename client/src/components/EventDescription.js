@@ -27,7 +27,7 @@ const EventDescription = (props) => {
     <div className="card event-description" key={event.id} id={event.id}>
       <div className="top-event-description">
         <div className="d-flex">
-          <div className="back-icon-container" onClick={goBack}><i role="navigation" className="fas fa-arrow-left back-icon" /></div>
+          <div role="presentation" className="back-icon-container" onClick={goBack} onKeyPress={goBack}><i role="navigation" className="fas fa-arrow-left back-icon" /></div>
           <div className="event-description-title">{ event.title }</div>
         </div>
         <div className="card top-middle-event-description bg-white m-3 mt-4 p-4 ">
@@ -46,7 +46,7 @@ const EventDescription = (props) => {
             </div>
           </div>
         </div>
-        <div role="banner" className="card m-3 justify-content-between align-items-center d-flex flex-row add-to-schedule" onClick={goBack}>
+        <div role="presentation" className="card m-3 justify-content-between align-items-center d-flex flex-row add-to-schedule" onClick={goBack} onKeyPress={goBack}>
           <span className="m-2 add-label">Add to your Schedule </span>
           <i className="fas fa-plus m-2 icon" />
         </div>

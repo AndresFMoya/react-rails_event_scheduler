@@ -45,6 +45,7 @@ This project consist of building a mobile web app for an Events Scheduler using 
    - Install gems with `bundle install --without production` from the rails root folder, to install the gems you'll need, excluding those needed only in production.
 - Run `rails db:create` followed by `rails db:migrate` to set up the database
 - Install static assets (like external javascript libraries, fonts) with `yarn install`    
+- To launch the app locally run: `heroku local -f Procfile.dev`.
 
 <p align="center">
   <strong>
