@@ -7,10 +7,14 @@ $lightGreen-color:#18cebb;
   background-color: $lightPurple-color;
 }
 
+.back-icon-container {
+  width: 10%
+}
+
 .back-icon {
   font-size: 2rem;
   color: white;
-  width: 10%
+  width: 100%;
 }
 
 .event-description-title {

@@ -42,13 +42,13 @@ const Event = (props) => {
     <li className="event">
       <p className="date-start">{event.date_start}</p>
       <div className="d-flex row">
-        <div className="card event-info" onClick={handleEventDescription} key={event.id} id={event.id}>
+        <card role="banner" className="card event-info" onClick={handleEventDescription} key={event.id} id={event.id}>
           <div className="event-title">{ event.title }</div>
           <div className="event-city pb-2">{ event.city }</div>
-        </div>
+        </card>
         { (isAuthenticated && user.event_follower_ids.includes(event.id))
-        || (state.isFollowed === true) ? <div className="event-button-remove" onClick={handleRemove}>+ Your Schedule</div>
-          : <div className="event-button-add" onClick={handleSubmit}>+ Your Schedule</div> }
+        || (state.isFollowed === true) ? <button type="button" className="event-button-remove" onClick={handleRemove}><span className="button-add w-100">+ Your Schedule </span></button>
+          : <button type="button" className="event-button-add" onClick={handleSubmit}><span className="button-add w-100">+ Your Schedule</span></button> }
       </div>
     </li>
   );

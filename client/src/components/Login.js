@@ -39,7 +39,7 @@ const Login = (props) => {
       <Link to="signUp" className="m-3 login"> Sign Up </Link>
       <form onSubmit={handleSubmit}>
         <h1 className="page-title title">Login</h1>
-          <input
+        <input
           className="form-Control mt-2 w-100"
           id="formControlsUsername"
           type="text"
@@ -47,7 +47,7 @@ const Login = (props) => {
           placeholder="username"
           value={state.username}
           onChange={handleChange}
-          />
+        />
         <input
           className="form-Control mt-2 w-100"
           id="formControlsPassword"
