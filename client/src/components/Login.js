@@ -38,7 +38,6 @@ const Login = (props) => {
         <h1 className="page-title">Login</h1>
         <input
           className="form-Control"
-          label="username"
           id="formControlsUsername"
           type="text"
           name="username"
@@ -48,7 +47,6 @@ const Login = (props) => {
         />
         <input
           className="form-Control"
-          label="Password"
           id="formControlsPassword"
           type="password"
           name="password"
