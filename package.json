@@ -15,4 +15,3 @@
     "heroku-postbuild": "yarn build && yarn deploy"
   }
 }
-

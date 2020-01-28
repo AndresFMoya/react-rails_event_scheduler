@@ -38,8 +38,8 @@ const EventDescription = (props) => {
 };
 
 EventDescription.propTypes = {
-  match: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  history: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  history: PropTypes.objectOf(PropTypes.object).isRequired,
+  match: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default EventDescription;

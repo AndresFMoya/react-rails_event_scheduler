@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import loadEvents from '../redux/actions/actionCreators';
+import loadEvents from '../redux/actions/eventActions';
 import EventsList from './EventsList';
 
 
@@ -21,7 +21,6 @@ const EventsContainer = (props) => {
     fetchEvents();
   }, []);
 
-
   return (
     <div className="container">
       <EventsList events={events} />
@@ -37,6 +36,7 @@ EventsContainer.propTypes = {
 const mapStateToProps = (state) => ({
   events: state.events,
   dispatch: state.dispatch,
+  login: state.login,
 });
 
 export default connect(mapStateToProps, null)(EventsContainer);

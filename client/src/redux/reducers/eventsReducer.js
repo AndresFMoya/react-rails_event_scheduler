@@ -1,12 +1,10 @@
-import { LOAD_EVENTS } from '../actions/actionTypes';
+import * as types from '../actions/actionTypes';
 
-const eventsReducer = (state = [], action) => {
+export default (state = [], action) => {
   switch (action.type) {
-    case LOAD_EVENTS:
+    case types.LOAD_EVENTS:
       return action.events;
     default:
       return state;
   }
 };
-
-export default eventsReducer;

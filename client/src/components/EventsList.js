@@ -4,6 +4,7 @@ import Event from './Event';
 
 const EventsList = (props) => {
   const { events } = props;
+
   return (
     <div className="listWrapper">
       {events.map((event) => (
