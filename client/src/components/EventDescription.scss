@@ -1,0 +1,61 @@
+$purple-color: #59499e;
+$cyan-color: #25bee0;
+$lightPurple-color: #8589ef;
+$lightGreen-color:#18cebb;
+
+.top-event-description {
+  background-color: $lightPurple-color;
+}
+
+.back-icon {
+  font-size: 2rem;
+  color: white;
+  width: 10%
+}
+
+.event-description-title {
+  font-size: 1.3rem;
+  color: white;
+  font-weight: bold;
+}
+
+.icon {
+  font-size: 1.3rem;
+  display: inline-block;
+  border-radius: 60px;
+  box-shadow: 0px 0px 2px $cyan-color;
+  padding: 0.5em 0.6em;
+  background-color: $cyan-color;
+  color: white;
+}
+
+.date-label {
+  color: $lightPurple-color
+}
+
+.city{
+  color: $purple-color
+}
+
+.date{
+  color: $purple-color
+}
+
+.add-to-schedule {
+  background-color: $cyan-color;
+}
+
+.add-label {
+  color: white;
+}
+
+.infoLabel {
+  color: $purple-color;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 3 3 3 0;
+}
+
+
+
+
