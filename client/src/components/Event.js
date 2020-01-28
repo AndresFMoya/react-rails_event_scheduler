@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createEventFollower, deleteEventFollower } from '../redux/actions/followActions';
-import './Event.scss'
+import './Event.scss';
 
 
 const Event = (props) => {
   const {
     event, user, isAuthenticated,
   } = props;
-  
+
   const history = useHistory();
-  
+
   const [state, setState] = useState({
     isFollowed: null,
   });
@@ -33,17 +33,17 @@ const Event = (props) => {
       });
     }
   };
-  
+
   const handleEventDescription = () => {
-    history.push(`events/${event.id}`)
+    history.push(`events/${event.id}`);
   };
 
   return (
     <li className="event">
       <p className="date-start">{event.date_start}</p>
       <div className="d-flex row">
-        <div className="card event-info" onClick={handleEventDescription}  key={event.id} id={event.id}>
-          <div className="event-title" >{ event.title }</div>
+        <div className="card event-info" onClick={handleEventDescription} key={event.id} id={event.id}>
+          <div className="event-title">{ event.title }</div>
           <div className="event-city pb-2">{ event.city }</div>
         </div>
         { (isAuthenticated && user.event_follower_ids.includes(event.id))

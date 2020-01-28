@@ -61,9 +61,9 @@ export const authenticate = (credentials) => dispatch => {
     });
 };
 
-export const signup = (user) => {
+export const signUp = (user) => {
   const newUser = user;
-  return dispatch => fetch('/users', {
+  return dispatch => fetch('/sign_up', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
