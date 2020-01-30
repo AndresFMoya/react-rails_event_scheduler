@@ -40,7 +40,7 @@ const Event = (props) => {
 
   return (
     <li className="event">
-      <p className="date-start">{event.date_start}</p>
+      <p className="date-start">{ event.date_start.slice(0, 10) }</p>
       <div className="d-flex row">
         <div role="presentation" className="card event-info" onClick={handleEventDescription} onKeyPress={handleEventDescription} key={event.id} id={event.id}>
           <div className="event-title">{ event.title }</div>
