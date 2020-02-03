@@ -10,13 +10,21 @@ import EventDescription from './components/EventDescription';
 import Login from './components/Login';
 import './App.scss';
 import SignUp from './components/SignUp';
+import { logout } from './redux/actions/authActions';
+
 
 const App = (props) => {
   const { isAuthenticated } = props;
+  
+  const handleLogout = (e) => {
+    e.preventDefault();
+    props.logout();
+  }
+  
   return (
     <Router>
       {isAuthenticated
-        ? <Link to="logout" className="m-3 login"> Logout </Link>
+        ? <button onClick={handleLogout} className="m-3 login"> Logout </button>
         : <Link to="login" className="m-3 login"> Login </Link> }
       <Switch>
         <Route exact path="/" component={EventsContainer} />
@@ -37,6 +45,7 @@ const mapStateToProps = (state) => ({
 
 App.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, { logout })(App);

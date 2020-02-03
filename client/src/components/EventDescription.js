@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import './EventDescription.scss';
+import { connect } from 'react-redux';
 
 const EventDescription = (props) => {
   const initialEventState = {
@@ -35,7 +36,7 @@ const EventDescription = (props) => {
             <span><i className="far fa-calendar-alt icon" /></span>
             <div className="ml-3">
               <div className="date-label">Date & Time</div>
-              <div className="date w-100">{ event.date_start.slice(0, 10) }</div>
+              <div className="date w-100">{ event.date_start }</div>
             </div>
           </div>
           <div className="event-description-date-card d-flex flex-row pt-3">
@@ -46,10 +47,11 @@ const EventDescription = (props) => {
             </div>
           </div>
         </div>
+        { props.isAuthenticated ?
         <div role="presentation" className="card m-3 justify-content-between align-items-center d-flex flex-row add-to-schedule" onClick={goBack} onKeyPress={goBack}>
           <span className="m-2 add-label">Add to your Schedule </span>
           <i className="fas fa-plus m-2 icon" />
-        </div>
+        </div> : <div /> }
 
       </div>
 
@@ -76,4 +78,9 @@ EventDescription.propTypes = {
   match: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
-export default EventDescription;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.currentUser,
+});
+
+export default connect(mapStateToProps, null)(EventDescription);

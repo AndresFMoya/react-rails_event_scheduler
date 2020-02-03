@@ -46,9 +46,10 @@ const Event = (props) => {
           <div className="event-title">{ event.title }</div>
           <div className="event-city pb-2">{ event.city }</div>
         </div>
-        { (isAuthenticated && user.event_follower_ids.includes(event.id))
-        || (state.isFollowed === true) ? <button type="button" className="event-button-remove" onClick={handleRemove}><span className="button-add w-100">+ Your Schedule </span></button>
-          : <button type="button" className="event-button-add" onClick={handleSubmit}><span className="button-add w-100">+ Your Schedule</span></button> }
+        { isAuthenticated
+          ? ((isAuthenticated && user.event_follower_ids.includes(event.id))
+        || (state.isFollowed === true)) ? <button type="button" className="event-button-remove" onClick={handleRemove}><span className="button-add w-100">+ Your Schedule </span></button>
+          : <button type="button" className="event-button-add" onClick={handleSubmit}><span className="button-add w-100">+ Your Schedule</span></button> : <div /> }
       </div>
     </li>
   );
