@@ -19,9 +19,7 @@ const EventDescription = (props) => {
     };
     getEvent();
   }, []);
-  
-  
-  
+
   const goBack = () => {
     props.history.goBack();
   };
@@ -38,7 +36,7 @@ const EventDescription = (props) => {
             <span><i className="far fa-calendar-alt icon" /></span>
             <div className="ml-3">
               <div className="date-label">Date & Time</div>
-              <div className="date w-100">{ event.date_start && event.date_start.slice (0,10) + " " + event.date_start.slice (11,16) }</div>
+              <div className="date w-100">{ event.date_start && `${event.date_start.slice(0, 10)} ${event.date_start.slice(11, 16)}` }</div>
             </div>
           </div>
           <div className="event-description-date-card d-flex flex-row pt-3">

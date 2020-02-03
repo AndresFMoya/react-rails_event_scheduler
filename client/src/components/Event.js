@@ -40,7 +40,7 @@ const Event = (props) => {
 
   return (
     <li className="event">
-      <p className="date-start">{ event.date_start && event.date_start.slice (0,10) + " " + event.date_start.slice (11,16) }</p>
+      <p className="date-start">{ event.date_start && `${event.date_start.slice(0, 10)} ${event.date_start.slice(11, 16)}` }</p>
       <div className="d-flex row">
         <div role="presentation" className="card event-info" onClick={handleEventDescription} onKeyPress={handleEventDescription} key={event.id} id={event.id}>
           <div className="event-title">{ event.title }</div>
@@ -49,7 +49,7 @@ const Event = (props) => {
         { isAuthenticated
           ? ((isAuthenticated && user.event_follower_ids.includes(event.id))
         || (state.isFollowed === true)) ? <button type="button" className="event-button-remove" onClick={handleRemove}><span className="button-add w-100">+ Your Schedule </span></button>
-          : <button type="button" className="event-button-add" onClick={handleSubmit}><span className="button-add w-100">+ Your Schedule</span></button> : <div /> }
+            : <button type="button" className="event-button-add" onClick={handleSubmit}><span className="button-add w-100">+ Your Schedule</span></button> : <div /> }
       </div>
     </li>
   );

@@ -7,8 +7,10 @@ import EventsList from './EventsList';
 import './EventsContainer.scss';
 
 const MyEventsContainer = (props) => {
-  const { events, dispatch, user, isAuthenticated } = props;
-  
+  const {
+    events, dispatch, user, isAuthenticated,
+  } = props;
+
   const fetchEvents = () => {
     axios.get('/api/v1/events')
       .then(response => {
@@ -16,13 +18,16 @@ const MyEventsContainer = (props) => {
       })
       .catch(error => (error));
   };
-  
+
   useEffect(() => {
     fetchEvents();
   }, []);
-  
-  const myEvents = isAuthenticated ? events.filter (event => user.event_follower_ids.includes(event.id)) : [];
-  
+
+  const myEvents = isAuthenticated
+    ? events.filter(
+      event => user.event_follower_ids.includes(event.id),
+    ) : [];
+
   return (
     <div className="container agenda">
       <div className="card title">My Events</div>
@@ -34,6 +39,8 @@ const MyEventsContainer = (props) => {
 MyEventsContainer.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object).isRequired,
   dispatch: PropTypes.func.isRequired,
+  user: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
