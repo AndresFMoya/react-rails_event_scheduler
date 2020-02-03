@@ -26,15 +26,16 @@ const App = (props) => {
     <Router>
       {isAuthenticated
         ? (
-          <div>
+          <div className="nav-bar">
             <Link to="/" onClick={handleLogout} className="m-3 login"> Logout </Link>
             <Link to="/my_events" className="m-3 login">My Events</Link>
             <Link to="/events" className="m-3 login">All Events</Link>
           </div>
         )
         : (
-          <div>
+          <div className="nav-bar">
             <Link to="/login" className="m-3 login"> Login </Link>
+            <Link to="signUp" className="m-3 login"> Sign Up </Link>
             <Link to="/events" className="m-3 login">All Events</Link>
           </div>
         ) }

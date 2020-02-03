@@ -36,7 +36,6 @@ const Login = (props) => {
 
   return (
     <div>
-      <Link to="signUp" className="m-3 login"> Sign Up </Link>
       <form onSubmit={handleSubmit}>
         <h1 className="page-title title">Login</h1>
         <input
