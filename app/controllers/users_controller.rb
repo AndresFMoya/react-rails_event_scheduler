@@ -18,6 +18,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def find_events
+    @user = User.find_by(username: params[:user][:username])
+    render json: @user.events
+  end
+
   private
 
   def user_params
