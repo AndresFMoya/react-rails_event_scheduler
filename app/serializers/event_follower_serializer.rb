@@ -1,3 +1,3 @@
 class EventFollowerSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :event_id
 end
