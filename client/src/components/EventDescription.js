@@ -47,12 +47,6 @@ const EventDescription = (props) => {
             </div>
           </div>
         </div>
-        { props.isAuthenticated ?
-        <div role="presentation" className="card m-3 justify-content-between align-items-center d-flex flex-row add-to-schedule" onClick={goBack} onKeyPress={goBack}>
-          <span className="m-2 add-label">Add to your Schedule </span>
-          <i className="fas fa-plus m-2 icon" />
-        </div> : <div /> }
-
       </div>
 
       <div className="card p-3 info">

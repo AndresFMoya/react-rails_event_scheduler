@@ -11,6 +11,7 @@ import Login from './components/Login';
 import './App.scss';
 import SignUp from './components/SignUp';
 import { logout } from './redux/actions/authActions';
+import MyEventsContainer from './components/MyEventsContainer';
 
 
 const App = (props) => {
@@ -28,12 +29,18 @@ const App = (props) => {
           <div>
             <Link to="/" onClick={handleLogout} className="m-3 login"> Logout </Link>
             <Link to="/my_events" className="m-3 login">My Events</Link>
+            <Link to="/events" className="m-3 login">All Events</Link>
           </div>
         )
-        : <Link to="/login" className="m-3 login"> Login </Link> }
+        : (
+          <div>
+            <Link to="/login" className="m-3 login"> Login </Link>
+            <Link to="/events" className="m-3 login">All Events</Link>
+          </div>
+        ) }
       <Switch>
         <Route exact path="/" component={EventsContainer} />
-        <Route exact path="/my_events" component={EventsContainer} />
+        <Route exact path="/my_events" component={MyEventsContainer} />
         <Route exact path="/events" component={EventsContainer} />
         <Route path="/events/:id" component={EventDescription} />
         <Route path="/login" component={Login} />
