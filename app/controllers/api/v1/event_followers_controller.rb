@@ -1,5 +1,6 @@
 class Api::V1::EventFollowersController < ApplicationController
   before_action :find_event, only: [:destroy]
+  before_action :authenticate_user
 
   def create
     @event_follower = current_user.event_followers.build(event_follower_params)

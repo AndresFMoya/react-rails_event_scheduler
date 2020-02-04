@@ -37,7 +37,7 @@ EventsContainer.propTypes = {
 const mapStateToProps = (state) => ({
   events: state.events,
   dispatch: state.dispatch,
-  login: state.login,
+  user: state.auth.currentUser,
 });
 
 export default connect(mapStateToProps, null)(EventsContainer);

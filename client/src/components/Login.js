@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { authenticate } from '../redux/actions/authActions';
+import { loadEventsFollowed } from '../redux/actions/followActions';
 import './Login.scss';
 
 const Login = (props) => {
@@ -30,13 +30,13 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (props.authenticate(state)) {
+      props.loadEventsFollowed(state);
       props.history.push('/');
     }
   };
 
   return (
     <div>
-      <Link to="signUp" className="m-3 login"> Sign Up </Link>
       <form onSubmit={handleSubmit}>
         <h1 className="page-title title">Login</h1>
         <input
@@ -68,7 +68,8 @@ const Login = (props) => {
 Login.propTypes = {
   authenticate: PropTypes.func.isRequired,
   history: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  loadEventsFollowed: PropTypes.func.isRequired,
 };
 
 
-export default connect(null, { authenticate })(Login);
+export default connect(null, { authenticate, loadEventsFollowed })(Login);
