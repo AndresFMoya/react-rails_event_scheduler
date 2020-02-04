@@ -70,7 +70,7 @@ const Event = (props) => {
 
 Event.propTypes = {
   event: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  followedEvents: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  followedEvents: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   createEventFollower: PropTypes.func.isRequired,
   deleteEventFollower: PropTypes.func.isRequired,
