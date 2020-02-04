@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { authenticate } from '../redux/actions/authActions';
-import { loadEventsFollowed} from '../redux/actions/followActions';
+import { loadEventsFollowed } from '../redux/actions/followActions';
 import './Login.scss';
 
 const Login = (props) => {
@@ -68,6 +68,7 @@ const Login = (props) => {
 Login.propTypes = {
   authenticate: PropTypes.func.isRequired,
   history: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  loadEventsFollowed: PropTypes.func.isRequired,
 };
 
 

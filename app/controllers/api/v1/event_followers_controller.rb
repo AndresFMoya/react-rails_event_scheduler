@@ -23,7 +23,6 @@ class Api::V1::EventFollowersController < ApplicationController
     @event_follower = current_user.event_followers.find_by(event_follower_params)
   end
 
-
   def event_follower_params
     params.require(:event_follower).permit(:event_id)
   end

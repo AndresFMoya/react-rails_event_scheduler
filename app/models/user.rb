@@ -4,8 +4,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, presence: true
   has_many :event_followers, dependent: :destroy
-  has_many :events, :through => :event_followers
-
+  has_many :events, through: :event_followers
 
   def self.from_token_request(request)
     username = request.params['auth'] && request.params['auth']['username']
