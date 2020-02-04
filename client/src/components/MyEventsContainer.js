@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,24 +8,14 @@ import './EventsContainer.scss';
 
 const MyEventsContainer = (props) => {
   const {
-    events, dispatch, user, isAuthenticated,
+    events, isAuthenticated, followed_events,
   } = props;
 
-  const fetchEvents = () => {
-    axios.get('/api/v1/events')
-      .then(response => {
-        dispatch(loadEvents(response.data));
-      })
-      .catch(error => (error));
-  };
-
-  useEffect(() => {
-    fetchEvents();
-  }, []);
+  const followedEventsArray = followed_events.map((obj) => obj.event_id);
 
   const myEvents = isAuthenticated
     ? events.filter(
-      event => user.event_follower_ids.includes(event.id),
+      event => followedEventsArray.includes(event.id),
     ) : [];
 
   return (
@@ -44,6 +34,7 @@ MyEventsContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  followed_events: state.followed_events,
   isAuthenticated: state.auth.isAuthenticated,
   events: state.events,
   dispatch: state.dispatch,
