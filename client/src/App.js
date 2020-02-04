@@ -10,24 +10,25 @@ import EventDescription from './components/EventDescription';
 import Login from './components/Login';
 import './App.scss';
 import SignUp from './components/SignUp';
-import { logout } from './redux/actions/authActions';
 import MyEventsContainer from './components/MyEventsContainer';
+import Logout from './components/Logout';
 
 
 const App = (props) => {
   const { isAuthenticated } = props;
 
-  const handleLogout = (e) => {
-    e.preventDefault();
-    props.logout();
-  };
+  // const handleLogout = (e) => {
+  //   e.preventDefault();
+  //   props.logout();
+  //   return <Redirect to="/events" push />;
+  // };
 
   return (
     <Router>
       {isAuthenticated
         ? (
           <div className="nav-bar">
-            <Link to="/" onClick={handleLogout} className="m-3 login"> Logout </Link>
+            <Link to="/logout" className="m-3 login"> Logout </Link>
             <Link to="/my_events" className="m-3 login">My Events</Link>
             <Link to="/events" className="m-3 login">All Events</Link>
           </div>
@@ -45,6 +46,7 @@ const App = (props) => {
         <Route exact path="/events" component={EventsContainer} />
         <Route path="/events/:id" component={EventDescription} />
         <Route path="/login" component={Login} />
+        <Route path="/logout" component={Logout} />
         <Route path="/signup" component={SignUp} />
         <Route component={NotFound} />
       </Switch>
@@ -59,7 +61,6 @@ const mapStateToProps = (state) => ({
 
 App.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  logout: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, { logout })(App);
+export default connect(mapStateToProps, null)(App);
