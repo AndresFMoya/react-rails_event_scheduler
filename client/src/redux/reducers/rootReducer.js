@@ -6,7 +6,7 @@ import followReducer from './followReducer';
 const rootReducer = combineReducers({
   events: eventsReducer,
   auth: authReducer,
-  follow: followReducer,
+  followed_events: followReducer,
 });
 
 export default rootReducer;

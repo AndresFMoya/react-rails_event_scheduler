@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def find_events
     @user = User.find_by(username: params[:user][:username])
-    render json: @user.events
+    render json: @user.event_followers
   end
 
   private

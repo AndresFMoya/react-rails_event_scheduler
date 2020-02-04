@@ -15,8 +15,13 @@ const authFailure = (errors) => ({
   errors,
 });
 
+const resetAction = () => ({
+  type: types.RESET,
+});
+
 export const logout = () => dispatch => {
   localStorage.clear();
+  dispatch(resetAction());
   return dispatch({
     type: types.LOGOUT,
   });

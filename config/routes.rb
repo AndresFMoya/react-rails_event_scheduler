@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post '/login', to: 'user_token#create'
   post '/sign_up', to: 'users#create'
   post '/find_user' => 'users#find'
-  post '/find_followed_events', to: 'users#find_events'
+  post '/find_user_events', to: 'users#find_events'
 
 
   get '*path', to: "application#fallback_index_html", constraints: ->(request) do

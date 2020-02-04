@@ -26,7 +26,8 @@ const Event = (props) => {
     }
   };
 
-  const handleRemove = () => {
+  const handleRemove = (e) => {
+    e.preventDefault();
     if (props.deleteEventFollower(event.id)) {
       setState({
         isFollowed: false,

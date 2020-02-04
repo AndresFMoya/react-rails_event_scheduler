@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { authenticate } from '../redux/actions/authActions';
+import { loadEventsFollowed} from '../redux/actions/followActions';
 import './Login.scss';
 
 const Login = (props) => {
@@ -29,6 +30,7 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (props.authenticate(state)) {
+      props.loadEventsFollowed(state);
       props.history.push('/');
     }
   };
@@ -69,4 +71,4 @@ Login.propTypes = {
 };
 
 
-export default connect(null, { authenticate })(Login);
+export default connect(null, { authenticate, loadEventsFollowed })(Login);
