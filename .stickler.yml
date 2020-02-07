@@ -1,0 +1,18 @@
+# add the linters you want stickler to use for this project
+linters:
+  eslint:
+    config: './client/.eslintrc.json'
+
+  rubocop:
+    display_cop_names: true
+    config: './rubocop.yml'
+
+files:
+  ignore:
+    - "bin/*"
+    - "db/*"
+    - "config/*"
+    - "Guardfile"
+    - "Rakefile"
+    - "README.md"
+    - "node_modules/**/*"
