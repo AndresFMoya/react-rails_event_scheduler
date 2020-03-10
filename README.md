@@ -11,7 +11,7 @@
   </a>
 </p>
 
-This project consist of building a mobile web app for an Events Scheduler using Rails API as backend, and ReactJS as frontend. This is the Final Project for the Microverse Technical Curriculum 
+This project consist of building a mobile web app for an Events Scheduler using Rails API as backend, and ReactJS as frontend. 
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
