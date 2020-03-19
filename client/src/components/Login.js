@@ -44,7 +44,7 @@ const Login = (props) => {
           id="formControlsUsername"
           type="text"
           name="username"
-          placeholder="username"
+          placeholder="username (Demo: admin)"
           value={state.username}
           onChange={handleChange}
         />
@@ -53,7 +53,7 @@ const Login = (props) => {
           id="formControlsPassword"
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Password (Demo: password)"
           value={state.password}
           onChange={handleChange}
         />
