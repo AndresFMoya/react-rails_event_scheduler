@@ -88,9 +88,15 @@ Give a ⭐️ if you like this project!
 
 This project is [MIT](https://github.com/AndresFMoya/react-rails_event_scheduler/blob/develop/LICENSE) licensed.
 
-## Contact
-- **Andrés Moya** - [@andresfmoya](https://github.com/andresfmoya) I will love to hear about you at one of the following places! :heart:
+## 📞 Get in Touch!
+I will love to hear about you at one of the following places! :heart:
 
 - [LinkedIn](https://www.linkedin.com/in/andres-f-moya/)
 - [Twitter](https://www.twitter.com/andmedev/) 
 - <andresfmoya@gmail.com>.
+
+<p align="center">
+  <strong>
+    <a href="https://andresmoya.me">andresmoya.me</a>
+</strong>
+</p>
