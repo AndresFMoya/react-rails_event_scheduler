@@ -29,12 +29,11 @@ In this project, we will build a Web App with the following technologies:
 - Ruby on Rails
 - RSpec
 - PostgreSQL
-- Apollo Client
-- GraphQL
+- ReactJS
+- Redux
 - Git
 - Bootstrap
 - HTML & CSS
-- ReactJS
 - Heroku
 
 ## Live Version
