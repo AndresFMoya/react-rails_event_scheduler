@@ -13,6 +13,8 @@
 
 This project consist of building a mobile web app for an Events Scheduler using Rails API as backend, and ReactJS as frontend. 
 
+[![Events Scheduler Video](https://img.youtube.com/vi/YYvNv9WAFgM/0.jpg)](https://www.youtube.com/watch?v=YYvNv9WAFgM)
+
 <img width="50%" alt="Screenshot" src="lib/Events_Scheduler_Screenshot.png">
 
 In this project, we will build a Web App with the following technologies:
